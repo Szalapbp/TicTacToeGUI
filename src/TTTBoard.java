@@ -19,10 +19,11 @@ public class TTTBoard {
     }
 
     public boolean isWin(String player) {
-        for(int row = 0; row<rows; row++){
+        // Check rows
+        for (int row = 0; row < rows; row++) {
             boolean win = true;
-            for(int col = 0; col<cols; col++){
-                if(board[row][col].equals(player)){
+            for (int col = 0; col < cols; col++) {
+                if (!board[row][col].equals(player)) {
                     win = false;
                     break;
                 }
@@ -31,31 +32,44 @@ public class TTTBoard {
                 return true;
             }
         }
-        for(int col = 0; col<cols; col++){
-            boolean win = true;
-            for(int row = 0; row<rows; row++){
-                if(!board[row][col].equals(player)){
-                    win = false;
-                    break;
-                }
-            }
-            if (win) {
-                return true;
-            }
 
-        }
-        boolean winDiagonal1 = true;
-        boolean winDiagonal2 = true;
-        for(int i = 0; i < rows; i++){
-            if(!board[i][i].equals(player)) {
-                winDiagonal1 = false;
+
+        for (int col = 0; col < cols; col++) {
+            boolean win = true;
+            for (int row = 0; row < rows; row++) {
+                if (!board[row][col].equals(player)) {
+                    win = false;
+                    break;
+                }
             }
+            if (win) {
+                return true;
+            }
+        }
+
+
+        boolean winDiagonal1 = true;
+        for (int i = 0; i < rows; i++) {
+            if (!board[i][i].equals(player)) {
+                winDiagonal1 = false;
+                break;
+            }
+        }
+
+
+        boolean winDiagonal2 = true;
+        for (int i = 0; i < rows; i++) {
             if (!board[i][rows - i - 1].equals(player)) {
                 winDiagonal2 = false;
+                break;
             }
         }
+
+
         return winDiagonal1 || winDiagonal2;
     }
+
+
     public boolean isTie(){
         for(int row = 0; row<rows; row++){
             for(int col = 0; col<cols; col++){

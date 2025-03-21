@@ -35,6 +35,7 @@ public class TTTGame {
         }
     }
 
+
     public void resetGame(){
         board.resetBoard();
         currentPlayer = "X";

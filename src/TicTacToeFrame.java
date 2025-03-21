@@ -59,20 +59,18 @@ public class TicTacToeFrame extends JFrame
         }
 
         @Override
-        public void actionPerformed(ActionEvent e){
-            gameOver = game.makeMove(row, col);
-
+        public void actionPerformed(ActionEvent e) {
             boardButtons[row][col].setText(game.getCurrentPlayer());
             boardButtons[row][col].setEnabled(false);
 
-            if(gameOver){
+            gameOver = game.makeMove(row, col);
+
+            if (gameOver) {
                 int response = JOptionPane.showConfirmDialog(null, "Play Again?", "Game Over", JOptionPane.YES_NO_OPTION);
-                if(response == JOptionPane.YES_OPTION){
+                if (response == JOptionPane.YES_OPTION) {
                     game.resetGame();
                     resetBoardUI();
-
-                }
-                else{
+                } else {
                     System.exit(0);
                 }
             }
