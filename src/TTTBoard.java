@@ -9,7 +9,7 @@ public class TTTBoard {
         this.board = new String[rows][cols];
         resetBoard();
     }
-
+//sets all tiles to blank at the start of the game
     public boolean setTile(int row, int col, String player){
         if(board[row][col].equals(" ")){
             board[row][col] = player;
@@ -17,7 +17,8 @@ public class TTTBoard {
         }
         return false;
     }
-
+//This method is checking multiple sections for possible wins, including horizontal row wins, vertical column wins, as well as
+    // diagonal wins from top right to bottom left and top left to bottom right
     public boolean isWin(String player) {
         // Check rows
         for (int row = 0; row < rows; row++) {
@@ -69,7 +70,8 @@ public class TTTBoard {
         return winDiagonal1 || winDiagonal2;
     }
 
-
+//this method checks to see if the players tied by checking to see if there are no more available tiles to play
+    //if there are, the game is not tied, if there is not, the game is tied
     public boolean isTie(){
         for(int row = 0; row<rows; row++){
             for(int col = 0; col<cols; col++){
@@ -80,6 +82,8 @@ public class TTTBoard {
         }
         return true;
     }
+
+    //this method resets the board after game over
     public void resetBoard(){
         for(int row = 0; row < rows; row++){
             for(int col = 0; col < cols; col++){

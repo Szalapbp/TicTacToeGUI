@@ -20,6 +20,7 @@ public class TTTTiles extends JButton{
         return col;
     }
 
+
     public void resetTile(){
         this.setText(" ");
         this.setEnabled(true);
